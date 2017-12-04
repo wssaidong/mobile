@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   TabBar,
@@ -13,32 +13,32 @@ import {
 
 import styles from './footer.less';
 
-function Footer({
-  dispatch, childrens, location
-}) {
-  return (
-    <div className={styles.normal}>
-      <TabBar
-        unselectedTintColor="#949494"
-        tintColor="#33A3F4"
-        barTintColor="white"
-        hidden={false}
-      >
-        <TabBar.Item
-          key="T"
-          selectedIcon={
-            <Button size="small">淘</Button>
-          }
-          selected={location.pathname === '/'}
-          onPress={() => dispatch(routerRedux.push('/'))}
-          data-seed="T"
+class Footer extends Component {
+  render() {
+    return (
+      <div className={styles.normal}>
+        <TabBar
+          unselectedTintColor="#949494"
+          tintColor="#33A3F4"
+          barTintColor="white"
+          hidden={false}
         >
-          {childrens}
-        </TabBar.Item>
+          <TabBar.Item
+            key="T"
+            selectedIcon={
+              <Button size="small">淘</Button>
+            }
+            selected={this.props.location.pathname === '/'}
+            onPress={() => this.props.dispatch(routerRedux.push('/'))}
+            data-seed="T"
+          >
+            {this.props.childrens}
+          </TabBar.Item>
 
-      </TabBar>
-    </div>
-  );
+        </TabBar>
+      </div>
+    );
+  }
 }
 
 Footer.propTypes = {

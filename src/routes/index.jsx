@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {
+  Icon, Card, WingBlank, WhiteSpace, Flex
+} from 'antd-mobile';
+import {
   connect
 } from 'dva';
 
 import styles from './index.less';
 
-import Main from '../components/layout/main.jsx';
+import Signle from '../components/layout/signle.jsx';
 
 @connect(state => ({
   gain: state.gain
@@ -33,15 +36,37 @@ class Index extends Component {
     }
   }
 
+  refresh = () => {
+    this.props.dispatch({
+      type: 'gain/getRandomInfo',
+      payload: null
+    });
+  }
+
+
   render() {
     return (
-      <Main location={this.props.location}>
-        <div className={styles.normal}>
-          <div className={styles.content}>
-            {this.state.info.desc}
-          </div>
-        </div>
-      </Main>
+      <Signle location={this.props.location}>
+        <WingBlank size="lg">
+          <WhiteSpace size="lg" />
+          <Card>
+            <Card.Header
+              thumb={this.state.info.image}
+              thumbStyle={{width: '100%'}}
+            />
+            <Card.Body>
+              <div>{this.state.info.desc}</div>
+            </Card.Body>
+          </Card>
+
+          <WhiteSpace size="lg" />
+          <footer className={styles.footer}>
+            <Flex justify="center">
+              <Icon type="search" size="md" onClick={this.refresh} />
+            </Flex>
+          </footer>
+        </WingBlank>
+      </Signle>
     );
   }
 }
