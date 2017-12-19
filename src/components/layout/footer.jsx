@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {
-  TabBar,
-  Button
+  TabBar
 } from 'antd-mobile';
 import {
   connect
@@ -13,6 +11,8 @@ import {
 
 import styles from './footer.less';
 
+@connect(state => ({
+}))
 class Footer extends Component {
   render() {
     return (
@@ -24,31 +24,57 @@ class Footer extends Component {
           hidden={false}
         >
           <TabBar.Item
-            key="T"
-            selectedIcon={
-              <Button size="small">淘</Button>
+            title="发现"
+            key="发现"
+            icon={
+              <i className="iconfont icon-faxian1" />
             }
+            selectedIcon={
+              <i className="iconfont icon-faxian1" />
+            }
+            badge={0}
             selected={this.props.location.pathname === '/'}
             onPress={() => this.props.dispatch(routerRedux.push('/'))}
-            data-seed="T"
+            data-seed="faxian"
           >
-            {this.props.childrens}
+            {this.props.location.pathname === '/' ? this.props.childrens : null}
           </TabBar.Item>
-
+          <TabBar.Item
+            title="热点"
+            key="热点"
+            icon={
+              <i className="iconfont icon-redian" />
+            }
+            selectedIcon={
+              <i className="iconfont icon-redian" />
+            }
+            badge={0}
+            selected={this.props.location.pathname === '/recommend'}
+            onPress={() => this.props.dispatch(routerRedux.push('/recommend'))}
+            data-seed="redian"
+          >
+            {this.props.location.pathname === '/recommend' ? this.props.childrens : null}
+          </TabBar.Item>
+          <TabBar.Item
+            title="详情"
+            key="详情"
+            icon={
+              <i className="iconfont icon-xiangqing" />
+            }
+            selectedIcon={
+              <i className="iconfont icon-xiangqing" />
+            }
+            badge={0}
+            selected={this.props.location.pathname === '/osc/auth'}
+            onPress={() => this.props.dispatch(routerRedux.push('/osc/auth'))}
+            data-seed="redian"
+          >
+            {this.props.location.pathname === '/osc/auth' ? this.props.childrens : null}
+          </TabBar.Item>
         </TabBar>
       </div>
     );
   }
 }
 
-Footer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  childrens: PropTypes.element.isRequired,
-  location: PropTypes.object.isRequired
-};
-
-function mapStateToProps() {
-  return {};
-}
-
-export default connect(mapStateToProps)(Footer);
+export default Footer;

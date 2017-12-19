@@ -8,15 +8,30 @@ function RouterConfig({
   const Index = Dynamic({
     app,
     models: () => [
-       import('./models/gain')
+       import('./models/osc')
     ],
     component: () => import('./routes/index')
+  });
+
+  const Link = Dynamic({
+    app,
+    models: () => [
+      import('./models/link')
+    ],
+    component: () => import('./routes/link')
+  });
+
+  const OscAuth = Dynamic({
+    app,
+    component: () => import('./routes/oscAuth')
   });
 
   return (
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={Index} />
+        <Route path="/recommend" component={Link} />
+        <Route path="/osc/auth" component={OscAuth} />
       </Switch>
     </Router>
   );
