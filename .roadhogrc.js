@@ -12,6 +12,7 @@ export default {
       'Android >= 4'
     ]
   },
+  define:{ APIHOST: 'http://api.laystall.top/' },
   // svgSpriteLoaderDirs: [
   //   require.resolve('antd-mobile').replace(/warn\.js$/, '') // antd-mobile 内置svg
   //   // path.resolve(__dirname, 'src/my-project-svg-foler') // 业务代码本地私有 svg 存放目录
