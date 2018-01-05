@@ -1,4 +1,4 @@
-import {getRecommendLink} from '../services/link';
+import {getRecommendLink, getArticles} from '../services/link';
 
 export default {
 
@@ -18,6 +18,13 @@ export default {
         type: 'recommendLink',
         payload: response
       });
+    },
+    *getArticles({payload}, {call, put}) {
+      const response = yield call(getArticles, payload);
+      yield put({
+        type: 'articles',
+        payload: response
+      });
     }
   },
 
@@ -27,6 +34,13 @@ export default {
       return {
         ...state,
         info: payload
+      };
+    },
+    articles(state, {payload}) {
+      console.log(payload);
+      return {
+        ...state,
+        info: payload.contentlist
       };
     }
   }

@@ -25,11 +25,11 @@ function RouterConfig({
     app,
     component: () => import('./routes/oscAuth')
   });
-
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={Index} />
+        <Route exact path="/" component={Link} />
+        <Route exact path="/index" component={Index} />
         <Route path="/recommend" component={Link} />
         <Route path="/osc/auth" component={OscAuth} />
       </Switch>

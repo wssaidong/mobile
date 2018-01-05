@@ -1,4 +1,4 @@
-// const Webpack = require('webpack');
+const Webpack = require('webpack');
 
 module.exports = function(config, env) {
   if (env === 'production') {
@@ -8,5 +8,8 @@ module.exports = function(config, env) {
     };
     // config.plugins.push(new Webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
   }
+  config.plugins.push(new Webpack.DefinePlugin({
+    A: 'A'
+  }));
   return config;
 };

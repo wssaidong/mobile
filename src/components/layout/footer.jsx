@@ -33,11 +33,11 @@ class Footer extends Component {
               <i className="iconfont icon-faxian1" />
             }
             badge={0}
-            selected={this.props.location.pathname === '/'}
-            onPress={() => this.props.dispatch(routerRedux.push('/'))}
+            selected={this.props.location.pathname === '/index'}
+            onPress={() => this.props.dispatch(routerRedux.push('/index'))}
             data-seed="faxian"
           >
-            {this.props.location.pathname === '/' ? this.props.childrens : null}
+            {this.props.location.pathname === '/index' ? this.props.childrens : null}
           </TabBar.Item>
           <TabBar.Item
             title="热点"
@@ -49,11 +49,13 @@ class Footer extends Component {
               <i className="iconfont icon-redian" />
             }
             badge={0}
-            selected={this.props.location.pathname === '/recommend'}
+            selected={this.props.location.pathname === '/' || this.props.location.pathname === '/recommend'}
             onPress={() => this.props.dispatch(routerRedux.push('/recommend'))}
             data-seed="redian"
           >
-            {this.props.location.pathname === '/recommend' ? this.props.childrens : null}
+            {
+              this.props.location.pathname === '/' ||
+              this.props.location.pathname === '/recommend' ? this.props.childrens : null}
           </TabBar.Item>
           <TabBar.Item
             title="详情"

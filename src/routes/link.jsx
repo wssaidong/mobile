@@ -23,7 +23,7 @@ class LinkInfo extends Component {
 
   componentDidMount() {
     this.props.dispatch({
-      type: 'link/getRecommendLink',
+      type: 'link/getArticles',
       payload: null
     });
   }
