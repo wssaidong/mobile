@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
-import {
-  TabBar
-} from 'antd-mobile';
-import {
-  connect
-} from 'dva';
-import {
-  routerRedux
-} from 'dva/router';
+import {TabBar} from 'antd-mobile';
+import {connect} from 'dva';
+import {routerRedux} from 'dva/router';
+import {withUserAgent} from 'react-useragent';
 
 import styles from './footer.less';
 
 @connect(state => ({
 }))
 class Footer extends Component {
+  componentDidMount() {
+    if (this.props.ua.os == null) {
+      this.props.dispatch(routerRedux.push('/tips'));
+    }
+  }
+
   render() {
     return (
       <div className={styles.normal}>
@@ -79,4 +80,4 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default withUserAgent(Footer);

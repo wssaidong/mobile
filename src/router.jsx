@@ -25,6 +25,11 @@ function RouterConfig({
     app,
     component: () => import('./routes/oscAuth')
   });
+
+  const Tips = Dynamic({
+    app,
+    component: () => import('./routes/tips')
+  });
   return (
     <Router history={history}>
       <Switch>
@@ -32,6 +37,7 @@ function RouterConfig({
         <Route exact path="/index" component={Index} />
         <Route path="/recommend" component={Link} />
         <Route path="/osc/auth" component={OscAuth} />
+        <Route path="/tips" component={Tips} />
       </Switch>
     </Router>
   );
